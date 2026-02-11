@@ -487,13 +487,13 @@ ctx.fillText(’HIGH SCORE: ’ + highScore.toLocaleString(), W/2, H*0.48);
 }
 
 // Start button
-const bx = W/2, by = H*0.56, bw = 160, bh = 48;
+const bx = W/2, by = H*0.56, bw = 180, bh = 52;
 ctx.strokeStyle = ‘#00ccff’;
-ctx.lineWidth = 1;
+ctx.lineWidth = 2;
 ctx.strokeRect(bx-bw/2, by-bh/2, bw, bh);
 ctx.fillStyle = ‘#00ccff’;
-ctx.font = ‘16px monospace’;
-ctx.fillText(‘S T A R T’, bx, by+6);
+ctx.font = ‘bold 18px monospace’;
+ctx.fillText(‘TAP TO START’, bx, by+6);
 
 ctx.fillStyle = ‘#445’;
 ctx.font = ‘11px monospace’;
@@ -524,13 +524,13 @@ ctx.fillText(‘★ NEW HIGH SCORE ★’, W/2, H*0.42+56);
 }
 
 // Retry button
-const bx = W/2, by = H*0.62, bw = 160, bh = 48;
+const bx = W/2, by = H*0.62, bw = 180, bh = 52;
 ctx.strokeStyle = ‘#ff4466’;
-ctx.lineWidth = 1;
+ctx.lineWidth = 2;
 ctx.strokeRect(bx-bw/2, by-bh/2, bw, bh);
 ctx.fillStyle = ‘#ff4466’;
-ctx.font = ‘16px monospace’;
-ctx.fillText(‘R E T R Y’, bx, by+6);
+ctx.font = ‘bold 18px monospace’;
+ctx.fillText(‘TAP TO RETRY’, bx, by+6);
 }
 
 // Input
@@ -545,20 +545,9 @@ function handleDown(e) {
 e.preventDefault();
 const pos = getPos(e);
 
-if (screen === ‘title’) {
-const bx = W/2, by = H*0.56, bw = 160, bh = 48;
-if (pos.x > bx-bw/2 && pos.x < bx+bw/2 && pos.y > by-bh/2 && pos.y < by+bh/2) {
+if (screen === ‘title’ || screen === ‘gameover’) {
 initGame();
 screen = ‘playing’;
-}
-return;
-}
-if (screen === ‘gameover’) {
-const bx = W/2, by = H*0.62, bw = 160, bh = 48;
-if (pos.x > bx-bw/2 && pos.x < bx+bw/2 && pos.y > by-bh/2 && pos.y < by+bh/2) {
-initGame();
-screen = ‘playing’;
-}
 return;
 }
 
